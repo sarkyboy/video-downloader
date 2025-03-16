@@ -1,7 +1,7 @@
 import type { VideoRecord } from '../types';
 
-// 更新为自定义域名
-const API_BASE_URL = 'https://worker-videodownload.okioi.com/api';
+// 使用正确的 Worker URL
+const API_BASE_URL = 'https://sniffer.okioi.com';
 
 // 获取所有历史记录
 export async function getHistory(): Promise<VideoRecord[]> {

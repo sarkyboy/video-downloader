@@ -3,14 +3,23 @@ export async function parseXhsLink(url: string) {
   console.log('Extracted clean URL:', cleanUrl);
 
   try {
-    // 修正 API 路径，确保与 Worker 中的路由匹配
-    const response = await fetch('https://worker-videodownload.okioi.com/api/proxy-sniffer', {
+    // 直接使用 Sniffer API
+    console.log('正在请求 Sniffer API...');
+    const response = await fetch('https://sniffer.okioi.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ url: cleanUrl })
     });
+
+    console.log('Sniffer API 响应状态:', response.status);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Sniffer API 响应错误:', errorText);
+      throw new Error(`API 请求失败: ${response.status} ${errorText}`);
+    }
 
     const data = await response.json();
     console.log('视频下载地址:', data.videos[0]);

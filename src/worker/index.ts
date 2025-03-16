@@ -139,7 +139,8 @@ export default {
         }
       }
       
-      if (path === '/proxy-sniffer' && request.method === 'POST') {
+      // 修改这里，同时支持 /proxy-sniffer 和 /api/proxy-sniffer 两种路径
+      if ((path === '/proxy-sniffer' || path === '/api/proxy-sniffer') && request.method === 'POST') {
         try {
           const requestData = await request.json();
           

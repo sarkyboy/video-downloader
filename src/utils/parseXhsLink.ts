@@ -3,9 +3,8 @@ export async function parseXhsLink(url: string) {
   console.log('Extracted clean URL:', cleanUrl);
 
   try {
-    // 使用本地代理或 Cloudflare Worker 代理请求
-    // 将请求发送到你自己的 worker-videodownload.okioi.com 而不是直接请求 sniffer.okioi.com
-    const response = await fetch('https://worker-videodownload.okioi.com/proxy-sniffer', {
+    // 修正 API 路径，确保与 Worker 中的路由匹配
+    const response = await fetch('https://worker-videodownload.okioi.com/api/proxy-sniffer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -3,13 +3,13 @@ export async function parseXhsLink(url: string) {
   console.log('Extracted clean URL:', cleanUrl);
 
   try {
-    // 修正为正确的 Sniffer API 地址
-    const response = await fetch('https://sniffer.okioi.com', {
-      method: 'POST',  // Worker 代码中确实需要 POST 方法
+    // 使用本地代理或 Cloudflare Worker 代理请求
+    // 将请求发送到你自己的 worker-videodownload.okioi.com 而不是直接请求 sniffer.okioi.com
+    const response = await fetch('https://worker-videodownload.okioi.com/proxy-sniffer', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      // credentials: 'include', // 移除这个，因为跨域请求可能不需要
       body: JSON.stringify({ url: cleanUrl })
     });
 

@@ -139,6 +139,42 @@ export default {
         }
       }
       
+      if (path === '/proxy-sniffer' && request.method === 'POST') {
+        try {
+          const requestData = await request.json();
+          
+          // 转发请求到 sniffer.okioi.com
+          const snifferResponse = await fetch('https://sniffer.okioi.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestData)
+          });
+          
+          const data = await snifferResponse.json();
+          
+          return new Response(JSON.stringify(data), {
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders
+            }
+          });
+        } catch (error: any) {
+          console.error('代理请求失败:', error);
+          return new Response(JSON.stringify({ 
+            error: '代理请求失败', 
+            details: error.message 
+          }), {
+            status: 500,
+            headers: {
+              'Content-Type': 'application/json',
+              ...corsHeaders
+            }
+          });
+        }
+      }
+      
       // 处理未匹配的路由
       return new Response('Not Found', { 
         status: 404,

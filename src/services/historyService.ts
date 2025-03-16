@@ -2,7 +2,7 @@ import type { VideoRecord } from '../types';
 
 // 修改为正确的 API 地址
 // 从 https://sniffer.okioi.com 改为 https://videodownloader.okioi.com
-const API_BASE_URL = 'https://videodownloader.okioi.com/api';
+const API_BASE_URL = 'https://worker-videodownload.okioi.com/api';
 
 // 获取所有历史记录
 export async function getHistory(): Promise<VideoRecord[]> {

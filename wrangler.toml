@@ -1,0 +1,8 @@
+name = "xhsvideo-api"
+main = "src/worker/index.ts"
+compatibility_date = "2023-10-16"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "xhsvideo-history"
+database_id = "f0ab8d88-8cbe-488b-a16f-69e8307c1a3b"

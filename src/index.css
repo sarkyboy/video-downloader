@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-pink: linear-gradient(135deg, #ff4d83 0%, #ff3366 100%);
+  }
+}
+
+.dark {
+  color-scheme: dark;
+}

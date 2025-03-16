@@ -3,7 +3,7 @@ export async function parseXhsLink(url: string) {
   console.log('Extracted clean URL:', cleanUrl);
 
   try {
-    // 直接使用 Sniffer API
+    // 使用 sniffer API 提取视频链接
     console.log('正在请求 Sniffer API...');
     const response = await fetch('https://sniffer.okioi.com', {
       method: 'POST',

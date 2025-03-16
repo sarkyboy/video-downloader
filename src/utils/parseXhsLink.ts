@@ -3,12 +3,13 @@ export async function parseXhsLink(url: string) {
   console.log('Extracted clean URL:', cleanUrl);
 
   try {
-    const response = await fetch('/api/sniffer', {
-      method: 'POST',
+    // 修正为正确的 Sniffer API 地址
+    const response = await fetch('https://sniffer.okioi.com', {
+      method: 'POST',  // Worker 代码中确实需要 POST 方法
       headers: {
         'Content-Type': 'application/json',
       },
-      credentials: 'include',
+      // credentials: 'include', // 移除这个，因为跨域请求可能不需要
       body: JSON.stringify({ url: cleanUrl })
     });
 
